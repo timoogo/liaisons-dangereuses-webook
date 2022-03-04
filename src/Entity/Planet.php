@@ -21,11 +21,12 @@ class Planet
     #[ORM\Column(type: 'integer')]
     private $diameter;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $galaxy;
 
     #[ORM\OneToMany(mappedBy: 'planet', targetEntity: NaturalSatellite::class, orphanRemoval: true)]
     private $satelites_r;
+
+    #[ORM\ManyToOne(targetEntity: Galaxy::class, inversedBy: 'planets')]
+    private $galaxy;
 
     public function __construct()
     {
@@ -64,17 +65,7 @@ class Planet
         return $this;
     }
 
-    public function getGalaxy(): ?string
-    {
-        return $this->galaxy;
-    }
 
-    public function setGalaxy(string $galaxy): self
-    {
-        $this->galaxy = $galaxy;
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, NaturalSatellite>
@@ -102,6 +93,18 @@ class Planet
                 $satelitesR->setPlanet(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getGalaxy(): ?Galaxy
+    {
+        return $this->galaxy;
+    }
+
+    public function setGalaxy(?Galaxy $galaxy): self
+    {
+        $this->galaxy = $galaxy;
 
         return $this;
     }

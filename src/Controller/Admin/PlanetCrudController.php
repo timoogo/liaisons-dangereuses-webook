@@ -23,8 +23,7 @@ class PlanetCrudController extends AbstractCrudController
             IdField::new('id')->setDisabled()->hideOnIndex(),
             TextField::new('name'),
             IntegerField::new('diameter'),
-            TextField::new('galaxy'),
-
+            AssociationField::new('galaxy')
             ];
     }
 

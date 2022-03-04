@@ -27,6 +27,9 @@ class ArtificialSatellite
     #[ORM\OneToMany(mappedBy: 'spacecraft_related', targetEntity: Officer::class)]
     private $officers;
 
+    #[ORM\Column(type: 'text', nullable: true)]
+    private $description;
+
     public function __construct()
     {
         $this->officers = new ArrayCollection();
@@ -103,6 +106,18 @@ class ArtificialSatellite
                 $officer->setSpacecraftRelated(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

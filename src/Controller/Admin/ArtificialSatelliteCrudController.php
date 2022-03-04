@@ -7,7 +7,10 @@ use Doctrine\Common\Collections\Selectable;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Validator\Constraints\Choice;
 
 class ArtificialSatelliteCrudController extends AbstractCrudController
@@ -23,13 +26,13 @@ class ArtificialSatelliteCrudController extends AbstractCrudController
         return [
             IdField::new('id')->setDisabled()->hideOnIndex(),
             TextField::new('name'),
+            TextareaField::new('description'),
             TextField::new('sponsor'),
             ChoiceField::new('type_of_mission')->setChoices([
                 'Experimental' => 'success',
                 'Earth Observation' => 'warning',
                 'Communication' => 'danger',
                 'Navigation' => 'success',])
-
         ];
     }
 

@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\ArtificialSatellite;
+use App\Entity\Galaxy;
 use App\Entity\NaturalSatellite;
 use App\Entity\Officer;
 use App\Entity\Planet;
@@ -36,6 +37,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::section("Celestial Objects");
 
+        yield MenuItem::linkToCrud('Galaxies', 'fa fa-home', Galaxy::class);
         yield MenuItem::linkToCrud('Planets', 'fa fa-home', Planet::class);
         yield MenuItem::linkToCrud('Natural satellites', 'fa fa-home', NaturalSatellite::class);
         yield MenuItem::linkToCrud('Artificial satellites', 'fa fa-home', ArtificialSatellite::class);
