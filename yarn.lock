@@ -969,7 +969,7 @@
     loader-utils "^2.0.0"
     schema-utils "^3.0.0"
 
-"@symfony/webpack-encore@^1.7.0":
+"@symfony/webpack-encore@^1.8.1":
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/@symfony/webpack-encore/-/webpack-encore-1.8.1.tgz#b28b574e33fefe0b7a46edc4b205ef93299c276d"
   integrity sha512-7JOZvEXFuZfJhyC2jcMio59c19EwygkcRUF9/WYJkp0A4cK+BlmLnZwDTBdzc7+hXJD8DfqD3DGguCkBibiUPQ==
@@ -4472,7 +4472,7 @@ safe-buffer@5.2.1, safe-buffer@>=5.1.0, safe-buffer@^5.0.1, safe-buffer@^5.1.0, 
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-sass-loader@^12.0.0:
+sass-loader@^12.6.0:
   version "12.6.0"
   resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-12.6.0.tgz#5148362c8e2cdd4b950f3c63ac5d16dbfed37bcb"
   integrity sha512-oLTaH0YCtX4cfnJZxKSLAyglED0naiYfNG1iXfU5w1LNZ+ukoA5DtyDIN5zmKVZwYNJP4KRc5Y3hkWga+7tYfA==
@@ -5094,7 +5094,7 @@ webpack-merge@^5.7.3:
     clone-deep "^4.0.1"
     wildcard "^2.0.0"
 
-webpack-notifier@^1.6.0:
+webpack-notifier@^1.15.0:
   version "1.15.0"
   resolved "https://registry.yarnpkg.com/webpack-notifier/-/webpack-notifier-1.15.0.tgz#72644a1a4ec96b3528704d28f79da5e70048e8ee"
   integrity sha512-N2V8UMgRB5komdXQRavBsRpw0hPhJq2/SWNOGuhrXpIgRhcMexzkGQysUyGStHLV5hkUlgpRiF7IUXoBqyMmzQ==
