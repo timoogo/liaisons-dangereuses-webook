@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello OfficerController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mt-3 mb-4">Products</h1>
+        <div class="row">
+            {% for officer in officers %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="https://via.placeholder.com/200x150" alt="{{ officer.name }}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ officer.name }}</h5>
+                            <h5 class="card-title">{{ officer.getSpacecraftRelated }}</h5>
+                            <div class="d-flex justify-content-between align-item-center">
+                                <a href="{{ path('officers_details', {id: officer.id}) }}" class="btn btn-dark">View details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

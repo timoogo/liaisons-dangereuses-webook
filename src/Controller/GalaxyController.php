@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AppController extends AbstractController
+class GalaxyController extends AbstractController
 {
-    #[Route('/', name: 'app')]
+    #[Route('/galaxies', name: 'galaxies')]
     public function index(): Response
     {
-        return $this->render('app/index.html.twig', [
-            'controller_name' => 'AppController',
+        return $this->render('galaxy/index.html.twig', [
+            'controller_name' => 'GalaxyController',
         ]);
     }
 }

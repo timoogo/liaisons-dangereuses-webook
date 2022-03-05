@@ -37,13 +37,13 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::section("Celestial Objects");
 
-        yield MenuItem::linkToCrud('Galaxies', 'fa fa-home', Galaxy::class);
-        yield MenuItem::linkToCrud('Planets', 'fa fa-home', Planet::class);
-        yield MenuItem::linkToCrud('Natural satellites', 'fa fa-home', NaturalSatellite::class);
-        yield MenuItem::linkToCrud('Artificial satellites', 'fa fa-home', ArtificialSatellite::class);
+        yield MenuItem::linkToCrud('Galaxies', 'fa-galactic-republic', Galaxy::class);
+        yield MenuItem::linkToCrud('Planets', 'fa fa-globe', Planet::class);
+        yield MenuItem::linkToCrud('Natural satellites', 'fa fa-moon', NaturalSatellite::class);
+        yield MenuItem::linkToCrud('Artificial satellites', 'fa fa-satellite', ArtificialSatellite::class);
 
 
         yield MenuItem::section("Officers");
-        yield MenuItem::linkToCrud('Officers', 'fa fa-home', Officer::class);
+        yield MenuItem::linkToCrud('Officers', 'fa fa-user-astronaut', Officer::class);
     }
 }

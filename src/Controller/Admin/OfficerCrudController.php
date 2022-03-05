@@ -19,7 +19,7 @@ class OfficerCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            IdField::new('id')->setDisabled()->hideOnIndex(),
             TextField::new('name'),
             AssociationField::new('spacecraft_related'),
         ];

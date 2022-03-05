@@ -14,7 +14,9 @@
             <script src="/build/app.js"></script>
         {% endblock %}
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body class="bg-gray-700 text-white">
+        {% block body %}
+    {% block navigation %} {% endblock %}
+        {% endblock %}
     </body>
 </html>
