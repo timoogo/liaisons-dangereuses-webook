@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello OfficerController!{% endblock %}
+{% block title %}Hello GalaxyController!{% endblock %}
 
 {% block body %}
     <div class="container">
-    {% block navigation %}
+        {% block navigation %}
         <nav class="flex flex-row justify-evenly items-center">
             <div class="py-4 hover:text-purple-500"><a href="{{ path('app') }}">LOGO</a></div>
             <ul class="flex flex-row py-4 justify-evenly items-center">
@@ -27,8 +27,7 @@
                 </li>
 
                 {% if not app.user %}
-                    <li
-                            class="text-white bg-purple-700
+                    <li class="text-white bg-purple-700
              hover:bg-purple-500
              focus:ring-4 focus:ring-purple-300
              font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">
@@ -36,14 +35,13 @@
                     </li>
                 {% else %}
 
-                    <li
-                            class="text-white bg-purple-700
+                    <li class="text-white bg-purple-700
              hover:bg-purple-500
              focus:ring-4 focus:ring-purple-300
              font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 hover:content-['{{app.user.username}}']">
                         <a href="{{ path('app_logout') }}">logout</a>
                     </li>
-
+                    </span>
 
                 {% endif %}
             </ul>
@@ -51,24 +49,30 @@
         </nav>
 
     {% endblock %}
-    <h1 class="my-3 text-center text-4xl">officers</h1>
-    <div class="flex justify-evenly items-center">
+        <h1 class="text-center text-4xl">{{ artificial_satellite.name }}</h1>
 
-        {% for officer in officers %}
-
-            <div>
-
-                <div class="flex justify-between flex-col items-center">
-                    <a href="{{ path('officers_details', {id: officer.id}) }}" class="transition-all ease-in-out duration-200 group p-12 hover:bg-purple-500">
-                        <div class="card-body">
-                            <img src="https://via.placeholder.com/200x150" alt="{{ officer.name }}" class="card-img-top">
-                            <h5 class="text-center py-4">{{ officer.name }}</h5>
-                        </div>
-                    </a>
-                </div>
+        <div class="row mt-3 mb-4">
+            <div class="col-md-4">
+                <img src="https://via.placeholder.com/600x400" alt="{{ artificial_satellite.name }}" class="mx-auto">
             </div>
-        {% endfor %}
+        <div class="py-4 px-8 mx-auto">
+            <p class="pb-4">
+                {{ artificial_satellite.description }}
+            </p>
+            <span class="text-purple-800 bg-gray-200 hover:bg-gray-300 rounded-full px-2 py-2 mt-4 font-bold text-sm leading-loose cursor-pointer">Sponsor : {{ artificial_satellite.sponsor }}</span>
+        </div>
+        <ul class="flex items-center justify-center flex-row">
+
+            {% for officer in artificial_satellite.officers %}
+           <li class="my-4">
+               <a class="text-white bg-purple-700
+                 hover:bg-purple-500
+                 focus:ring-4 focus:ring-purple-300
+                 font-medium rounded-full text-sm px-5 py-2.5 text-center" href="{{ path('officers_details', {id: officer.id}) }}"> Officer : {{ officer.name }}</a>
+           </li>
+            {% endfor %}
+
+            </ul>
+        </div>
     </div>
-
-
 {% endblock %}

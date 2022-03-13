@@ -27,6 +27,7 @@ class GalaxyController extends AbstractController
         return $this->render('galaxy/details.html.twig', [
             'galaxy' => $galaxy,
 
+
         ]);
     }
 }

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controller\Admin;
-
 use App\Entity\ArtificialSatellite;
 use App\Entity\Galaxy;
 use App\Entity\NaturalSatellite;
