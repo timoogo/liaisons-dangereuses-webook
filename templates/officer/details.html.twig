@@ -4,6 +4,39 @@
 
 {% block body %}
     <div class="container">
+        {% block navigation %}
+            <nav>
+                <ul>
+
+                    {% if not app.user %}
+                        <li>
+                            <a href="{{ path('app_login')  }}">Login</a>
+                        </li>
+                    {% else %}
+                        <span class="flex justify-between">{{ app.user.username }}
+                    <li>
+                        <a href="{{ path('app_logout') }}">logout</a>
+                    </li>
+                    </span>
+
+                    {% endif %}
+                    <li class="flex justify-between">
+                        <a href="{{ path('planets') }}">Planets</a>
+                    </li>
+                    <li class="flex justify-between">
+                        <a href="{{ path('galaxies') }}">Galaxies</a>
+                    </li>
+                    <li class="flex justify-between">
+                        <a href="{{ path('officers') }}">Officers</a>
+                    </li>
+                    <li class="flex justify-between">
+                        <a href="{{ path('natural_satellites') }}">Natural satellites</a>
+                    </li>
+
+
+                </ul>
+            </nav>
+        {% endblock %}
         <div class="row mt-3 mb-4">
             <div class="col-md-4">
                 <img src="https://via.placeholder.com/600x400" alt="{{ officer.name }}" class="img-fluid">
