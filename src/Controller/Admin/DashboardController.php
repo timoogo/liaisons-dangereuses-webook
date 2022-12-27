@@ -22,7 +22,7 @@ class DashboardController extends AbstractDashboardController
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //
          $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
-         return $this->redirect($adminUrlGenerator->setController(PlanetCrudController::class)->generateUrl());
+         return $this->redirect($adminUrlGenerator->setController(OfficerCrudController::class)->generateUrl());
 
     }
 
@@ -34,14 +34,6 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::section("Celestial Objects");
-
-        yield MenuItem::linkToCrud('Galaxies', 'fa-galactic-republic', Galaxy::class);
-        yield MenuItem::linkToCrud('Planets', 'fa fa-globe', Planet::class);
-        yield MenuItem::linkToCrud('Natural satellites', 'fa fa-moon', NaturalSatellite::class);
-        yield MenuItem::linkToCrud('Artificial satellites', 'fa fa-satellite', ArtificialSatellite::class);
-
-
         yield MenuItem::section("Officers");
         yield MenuItem::linkToCrud('Officers', 'fa fa-user-astronaut', Officer::class);
     }
