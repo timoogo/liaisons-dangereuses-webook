@@ -23,20 +23,9 @@
 
 
                 <li class="flex justify-between px-4 hover:text-purple-500 font-normal hover:font-bold">
-                    <a href="{{ path('planets') }}">Planets</a>
-                </li>
-                <li class="flex justify-between px-4 hover:text-purple-500 font-normal hover:font-bold">
-                    <a href="{{ path('galaxies') }}">Galaxies</a>
-                </li>
-                <li class="flex justify-between px-4 hover:text-purple-500 font-normal hover:font-bold">
                     <a href="{{ path('officers') }}">Officers</a>
                 </li>
-                <li class="flex justify-between px-4 hover:text-purple-500 font-normal hover:font-bold">
-                    <a href="{{ path('natural_satellites') }}">Natural satellites</a>
-                </li>
-                <li class="flex justify-between px-4 hover:text-purple-500 font-normal hover:font-bold">
-                    <a href="{{ path('artificial_satellites') }}">Artifial satellites</a>
-                </li>
+    
 
                 {% if not app.user %}
                     <li class="text-white bg-purple-700
