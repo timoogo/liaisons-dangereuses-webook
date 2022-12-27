@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Letter index{% endblock %}
+
+{% block body %}
+    <h1>Letter index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for letter in letters %}
+            <tr>
+                <td>{{ letter.id }}</td>
+                <td>{{ letter.title }}</td>
+                <td>
+                    <a href="{{ path('app_letter_crud_show', {'id': letter.id}) }}">show</a>
+                    <a href="{{ path('app_letter_crud_edit', {'id': letter.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_letter_crud_new') }}">Create new</a>
+{% endblock %}

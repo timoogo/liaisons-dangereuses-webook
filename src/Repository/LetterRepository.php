@@ -2,30 +2,30 @@
 
 namespace App\Repository;
 
-use App\Entity\ArtificialSatellite;
+use App\Entity\Letter;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method ArtificialSatellite|null find($id, $lockMode = null, $lockVersion = null)
- * @method ArtificialSatellite|null findOneBy(array $criteria, array $orderBy = null)
- * @method ArtificialSatellite[]    findAll()
- * @method ArtificialSatellite[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Letter|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Letter|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Letter[]    findAll()
+ * @method Letter[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ArtificialSatelliteRepository extends ServiceEntityRepository
+class LetterRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ArtificialSatellite::class);
+        parent::__construct($registry, Letter::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(ArtificialSatellite $entity, bool $flush = true): void
+    public function add(Letter $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -37,7 +37,7 @@ class ArtificialSatelliteRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(ArtificialSatellite $entity, bool $flush = true): void
+    public function remove(Letter $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -46,15 +46,15 @@ class ArtificialSatelliteRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return ArtificialSatellite[] Returns an array of ArtificialSatellite objects
+    //  * @return Letter[] Returns an array of Letter objects
     //  */
     /*
     public function findByExampleField($value)
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
+        return $this->createQueryBuilder('l')
+            ->andWhere('l.exampleField = :val')
             ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
+            ->orderBy('l.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
@@ -63,10 +63,10 @@ class ArtificialSatelliteRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?ArtificialSatellite
+    public function findOneBySomeField($value): ?Letter
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
+        return $this->createQueryBuilder('l')
+            ->andWhere('l.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()

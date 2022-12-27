@@ -1,11 +1,9 @@
 <?php
 
 namespace App\Controller\Admin;
-use App\Entity\ArtificialSatellite;
-use App\Entity\Galaxy;
-use App\Entity\NaturalSatellite;
+use App\Entity\Character;
+use App\Entity\Letter;
 use App\Entity\Officer;
-use App\Entity\Planet;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -29,12 +27,16 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Symfony of the Galaxy');
+            ->setTitle('Liaisons Dangereuses');
     }
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::section("Officers");
         yield MenuItem::linkToCrud('Officers', 'fa fa-user-astronaut', Officer::class);
+        yield MenuItem::linkToCrud('Characters', 'fa fa-user-astronaut', Character::class);
+
+        yield MenuItem::section("Letters");
+        yield MenuItem::linkToCrud('Letters', 'fa fa-envelope', Letter::class);
     }
 }

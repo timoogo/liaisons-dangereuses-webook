@@ -16,8 +16,7 @@ class Officer
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    #[ORM\ManyToOne(targetEntity: ArtificialSatellite::class, inversedBy: 'officers')]
-    private $spacecraft_related;
+   
 
     public function getId(): ?int
     {
@@ -36,15 +35,5 @@ class Officer
         return $this;
     }
 
-    public function getSpacecraftRelated(): ?ArtificialSatellite
-    {
-        return $this->spacecraft_related;
-    }
 
-    public function setSpacecraftRelated(?ArtificialSatellite $spacecraft_related): self
-    {
-        $this->spacecraft_related = $spacecraft_related;
-
-        return $this;
-    }
 }
