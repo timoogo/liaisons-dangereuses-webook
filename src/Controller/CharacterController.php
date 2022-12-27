@@ -16,7 +16,7 @@ class CharacterController extends AbstractController
     #[Route('/characters', name: 'characters')]
     public function index(CharacterRepository $characterRepository): Response
     {
-        return $this->render('officer/index.html.twig', [
+        return $this->render('character/index.html.twig', [
             'controller_name' => 'CharacterController',
             'characters' => $characterRepository->findAll(),
         ]);
