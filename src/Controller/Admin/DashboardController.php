@@ -9,9 +9,17 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
+
 
 class DashboardController extends AbstractDashboardController
 {
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+    
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
@@ -22,6 +30,19 @@ class DashboardController extends AbstractDashboardController
          return $this->redirect($adminUrlGenerator->setController(CharacterCrudController::class)->generateUrl());
 
     }
+    public function sortByIdAsc()
+{
+    // récupérez votre liste d'enregistrements
+
+    $records = $this->entityManager->getRepository(Letter::class)->findAll();
+    // triez votre liste d'enregistrements en utilisant la fonction usort() et une fonction de comparaison qui compare l'ID de chaque enregistrement
+    usort($records, function($a, $b) {
+        return $a->getId() <=> $b->getId();
+    });
+
+    // retournez votre liste triée
+    return $records;
+}
 
     public function configureDashboard(): Dashboard
     {

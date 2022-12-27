@@ -28,6 +28,9 @@ class Character
     #[ORM\OneToMany(mappedBy: 'receiver', targetEntity: Letter::class)]
     private $received_letters;
 
+    #[ORM\Column(type: 'boolean')]
+    private $IsOriginal;
+
     public function __construct()
     {
         $this->sent_letters = new ArrayCollection();
@@ -125,5 +128,17 @@ class Character
     public function __toString()
     {
         return $this->getName();
+    }
+
+    public function getIsOriginal(): ?bool
+    {
+        return $this->IsOriginal;
+    }
+
+    public function setIsOriginal(bool $IsOriginal): self
+    {
+        $this->IsOriginal = $IsOriginal;
+
+        return $this;
     }
 }

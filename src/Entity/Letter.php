@@ -22,6 +22,9 @@ class Letter
     #[ORM\ManyToOne(targetEntity: Character::class, inversedBy: 'received_letters')]
     private $receiver;
 
+    #[ORM\Column(type: 'string', length: 1000000)]
+    private $content;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Letter
     public function setReceiver(?Character $receiver): self
     {
         $this->receiver = $receiver;
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(string $content): self
+    {
+        $this->content = $content;
 
         return $this;
     }
