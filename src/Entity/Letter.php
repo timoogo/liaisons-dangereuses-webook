@@ -30,6 +30,9 @@ class Letter
         return $this->id;
     }
 
+    public function setId($id) {
+        $this->id = $id;
+    }
     public function getTitle(): ?string
     {
         return $this->title;

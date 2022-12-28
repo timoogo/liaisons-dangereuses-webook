@@ -20,14 +20,16 @@ class LetterCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
+        // tri ascendant par 'title'
+
         return [
-           // IdField::new('id')->setDisabled()->hideOnIndex(),
-            TextField::new('title'),
+            IdField::new('id')->setDisabled()->hideOnIndex()->hideOnForm(),
+            TextField::new('title')->setSortable(true),
             // AssociationField for sender Character mandatory
             AssociationField::new('sender'),
             AssociationField::new('receiver'),
             // AssociationField for receiver Character mandatory
-            TextareaField::new('content'),
+            TextareaField::new('content')->hideOnIndex(),
             
             ];
     }

@@ -1,0 +1,10 @@
+easy_admin:
+  # ...
+  entities:
+    Letter:
+      # ...
+      list:
+        max_results: 175
+        sort:
+          field: id
+          direction: 'ASC'
