@@ -4,37 +4,48 @@
 
 {% block body %}
 {% block navigation %}
-<nav class="flex flex-row justify-evenly items-center">
-    <div class="py-4 hover:text-purple-500"><a href="{{ path('app') }}">LOGO</a></div>
-    <ul class="flex flex-row py-4 justify-evenly items-center">
+{% include 'app/navigation.html.twig' %}
+{% endblock %}
+
+{% block content %}
+{% set interactions = letters %}
+{% set characters = [] %}
 
 
-   
-       
 
+<h2>Interactions</h2>
+<div class="cols">
+  {% for interaction in interactions %}
+    <div class="col">
+      <div class="container">
+        <div class="front" style="background-image: url('https://images.unsplash.com/photo-1550404065-b27f9dcdf8c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80')">
+          <div class="inner">
+            <p>{{ interaction.title | slice (0,-4)}}</p>
+          </div>
+        </div>
+        <div class="back">
+          <div class="inner">
+            {% for interaction in interactions %}
+            {% if interaction.sender not in characters %}
+                {% set characters = characters|merge([interaction.sender]) %}
+            {% endif %}
+            {% if interaction.receiver not in characters %}
+                {% set characters = characters|merge([interaction.receiver]) %}
+            {% endif %}
+        {% endfor %}
+        {% set characters = characters|sort %}
+        {% set interactions = interactions|sort %}
+        {% set interactions = interactions|reverse %}
+        <p>De {{interaction.sender}}</p>
+        <p>À {{interaction.receiver}}</p>
+            <a class="readMore" href="{{ path('app_letter_crud_show', {'id': interaction.id}) }}">Lire la suite</a>
 
-        {% if not app.user %}
-            <li class="text-white bg-purple-700
-     hover:bg-purple-500
-     focus:ring-4 focus:ring-purple-300
-     font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">
-                <a href="{{ path('app_login')  }}">Login</a>
-            </li>
-        {% else %}
-
-            <li class="text-white bg-purple-700
-     hover:bg-purple-500
-     focus:ring-4 focus:ring-purple-300
-     font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 hover:content-['{{app.user.username}}']">
-                <a href="{{ path('app_logout') }}">logout</a>
-            </li>
-            </span>
-
-        {% endif %}
-    </ul>
-
-</nav>
-
+        </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
 {% endblock %}
 
 

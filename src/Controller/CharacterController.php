@@ -13,20 +13,22 @@ use Doctrine\ORM\Mapping as ORM;
 class CharacterController extends AbstractController
 {
 
-    #[Route('/characters', name: 'characters')]
+    #[Route('/characters', name: 'app_character_crud_index')]
     public function index(CharacterRepository $characterRepository): Response
     {
-        return $this->render('character/index.html.twig', [
+        return $this->render('character_crud/index.html.twig', [
             'controller_name' => 'CharacterController',
             'characters' => $characterRepository->findAll(),
         ]);
     }
-    #[Route('/characters/{id}', name: 'characters_details')]
+    #[Route('/characters/{id}', name: 'app_character_crud_show')]
     # @Entity("character", expr="repository.find(id)")
 
     public  function show(Character $character):Response {
-        return $this->render('character/details.html.twig', [
+        return $this->render('character_crud/show.html.twig', [
             'character' => $character,
+            'letters_sent' => $character->getSentLetters(),
+            'letters_received' => $character->getReceivedLetters(),
 
         ]);
     }

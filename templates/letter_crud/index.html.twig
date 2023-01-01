@@ -1,35 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Letter index{% endblock %}
+{% block title %}letter index{% endblock %}
 
 {% block body %}
-    <h1>Letter index</h1>
+{% include 'app/navigation.html.twig' %}
+<div class="wrapper">
+    <h1>Liste des personnages</h1>
+    <div class="cols">
+      {% for letter in letters %}
+        <div class="col">
+          <div class="container">
+            <div class="front" style="background-image: url('https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1373&q=80')">
+              <div class="inner">
+                <!-- letter.title -4 derniers characteres -->
+                <p>{{ letter.title|slice(0, -4) }}</p>
+            </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+             <!-- uniquement la deuxième ligne  de content-->
+             {% set lines = letter.content|split('\n') %}
+                <p>{{ lines[1] }}</p>
+             <a class="readMore" href="{{ path('app_letter_crud_show', {'id': letter.id}) }}">Lire la suite</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+      
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for letter in letters %}
-            <tr>
-                <td>{{ letter.id }}</td>
-                <td>{{ letter.title }}</td>
-                <td>
-                    <a href="{{ path('app_letter_crud_show', {'id': letter.id}) }}">show</a>
-                    <a href="{{ path('app_letter_crud_edit', {'id': letter.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <a href="{{ path('app_letter_crud_new') }}">Create new</a>
+
+ 
 {% endblock %}

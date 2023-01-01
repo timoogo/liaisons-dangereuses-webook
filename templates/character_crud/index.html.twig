@@ -3,35 +3,33 @@
 {% block title %}Character index{% endblock %}
 
 {% block body %}
-    <h1>Character index</h1>
+{% include 'app/navigation.html.twig' %}
+<div class="wrapper">
+    <h1>Liste des personnages</h1>
+    <div class="cols">
+      {% for character in characters %}
+        <div class="col">
+          <div class="container">
+            <div class="front" style="background-image: url('https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1373&q=80')">
+              <div class="inner">
+                <p>{{ character.name }}</p>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <!-- trim description -->
+                <p>{{ character.description|slice(0, 100) }}...</p>
+                <a class="readMore" href="{{ path('app_character_crud_show', {'id': character.id}) }}">Lire la suite</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+      
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for character in characters %}
-            <tr>
-                <td>{{ character.id }}</td>
-                <td>{{ character.name }}</td>
-                <td>{{ character.description }}</td>
-                <td>
-                    <a href="{{ path('app_character_crud_show', {'id': character.id}) }}">show</a>
-                    <a href="{{ path('app_character_crud_edit', {'id': character.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <a href="{{ path('app_character_crud_new') }}">Create new</a>
+
+ 
 {% endblock %}

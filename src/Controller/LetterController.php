@@ -13,20 +13,22 @@ use Doctrine\ORM\Mapping as ORM;
 class LetterController extends AbstractController
 {
 
-    #[Route('/letters', name: 'letters')]
+    #[Route('/letters', name: 'app_letter_crud_index')]
     public function index(LetterRepository $letterRepository): Response
     {
-        return $this->render('letter/index.html.twig', [
+        return $this->render('letter_crud/index.html.twig', [
             'controller_name' => 'LetterController',
             'letters' => $letterRepository->findAll(),
         ]);
     }
-    #[Route('/letters/{id}', name: 'letters_details')]
+    #[Route('/letters/{id}', name: 'app_letter_crud_show')]
     # @Entity("letter", expr="repository.find(id)")
 
     public  function show(Letter $letter):Response {
-        return $this->render('letter/details.html.twig', [
+        return $this->render('letter_crud/show.html.twig', [
             'letter' => $letter,
+            'sender' => $letter->getSender(),
+            'receiver' => $letter->getReceiver(),
 
         ]);
     }
