@@ -4,6 +4,9 @@
 
 {% block body %}
    <div class="wrapper">
+    <header>
+        {% include 'app/navigation.html.twig' %}
+        </header>
     <div class="space"></div>
     <h2>Description</h2>
 
@@ -110,7 +113,5 @@
  
     
    
-    <a href="{{ path('app_character_crud_index') }}">back to list</a>
-
    </div>
 {% endblock %}

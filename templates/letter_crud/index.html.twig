@@ -21,7 +21,7 @@
              <!-- uniquement la deuxième ligne  de content-->
              {% set lines = letter.content|split('\n') %}
                 <p>{{ lines[1] }}</p>
-             <a class="readMore" href="{{ path('app_letter_crud_show', {'id': letter.id}) }}">Lire la suite</a>
+             <a class="readMore" href="{{ path('app_letter_crud_show', {'id': letter.id}) }}">Lire la lettre</a>
               </div>
             </div>
           </div>

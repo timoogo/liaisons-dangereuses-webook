@@ -1,8 +1,14 @@
-{%block navigation %}
+{% block navigation %}
 <nav id="navbar">
     <ul>
         <li><a href="{{ path('app_character_crud_index') }}">Personnages</a></li>
         <li><a href="{{ path('app_letter_crud_index') }}">Lettres</a></li>
+        <!-- if template file name is show -->
+        {% if app.request.attributes.get('_route') == 'app_letter_crud_show' %}
+        <li><a href="{{path('app_character_crud_index')}}">Retour à la liste des lettres</a></li>
+        {% elseif app.request.attributes.get('_route') == 'app_character_crud_show' %}
+        <li><a href="{{path('app_letter_crud_index')}}">Retour à la liste des personnages</a></li>
+        {% endif %}
     </ul>
 </nav>
 

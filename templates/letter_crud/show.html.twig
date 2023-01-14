@@ -3,31 +3,35 @@
 {% block title %}Letter{% endblock %}
 
 {% block body %}
-{% block navigation %}
-{% include 'app/navigation.html.twig' %}
-{% endblock %}
+
 <!-- lettre de lien vers character sender -->
 <div class="wrapper">
-    <div class="info">
-        <h1> Lettre de 
-            <a href="{{ path('app_character_crud_show', {'id': letter.sender.id}) }}">{{ letter.sender.name }}</a>
-        à 
-            <a href="{{ path('app_character_crud_show', {'id': letter.receiver.id}) }}">{{ letter.receiver.name }}</a>
-        
-        </h1>
-    </div>
+    <header>
 
-    <div class="content">
-        <!-- variable twig to store les deux premiers mots -->
-        {% set firstWords = letter.content|split(' ')|slice(0, 2)|join(' ') %}
-        <!-- set reciever and sender from the first line of  letter.content-->
-        {% set lines = letter.content|split('\n') %}
-        <!-- exclure first words -->
-        <!-- afficher first words -->
-        <h1>Lettre {{letter.title | slice(0,-4)}}</h1>
-        <p>{{letter.content}}</p>
-      
+        {% include 'app/navigation.html.twig' %}
+        <a href="{{ path('app_letter_crud_index') }}">Retour à la liste des lettres</a>
+<!-- de à avec lien vers le character-->
+   
 
-    </div>
+    </header>
+    <main>
+        <div class="letter">
+            <div class="letter__header">
+                <div class="letter__header__from" data-title="{{ letter.sender.name }}</a>
+                    {{letter.sender.description}}">
+                    <p>De</p>
+                    <a href="{{ path('app_character_crud_show', {'id': letter.sender.id}) }}">{{ letter.sender.name }}</a>
+                </div>
+                <div class="letter__header__to" data-title="{{letter.receiver.description}}">
+                    <p>À</p>
+                    <a href="{{ path('app_character_crud_show', {'id': letter.receiver.id}) }}">{{ letter.receiver.name }}</a>
+                </div>
+          
+            </div>
+            <div class="letter__content">
+                <p>{{ letter.content }}</p>
+            </div>
+        </div>
+    </main>
 </div>
 {% endblock %}
