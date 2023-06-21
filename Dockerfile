@@ -10,7 +10,7 @@ WORKDIR /var/www/html
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 # Composer update
 
-    
+
 RUN git clone https://github.com/timoogo/liaisons-dangereuses-webook.git --depth=1 /var/www/html && \
     rm -rf .git
 
